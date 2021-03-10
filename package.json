@@ -1,0 +1,29 @@
+{
+  "name": "drinkinggamebot",
+  "version": "1.0.0",
+  "description": "Discord bot for playing drinking games.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zaktaw/DrinkingGameBot.git"
+  },
+  "keywords": [
+    "Discord",
+    "Bot",
+    "Node.js",
+    "Discord.js",
+    "Party"
+  ],
+  "author": "Zakaria Karlsen Tawfiq",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zaktaw/DrinkingGameBot/issues"
+  },
+  "homepage": "https://github.com/zaktaw/DrinkingGameBot#readme",
+  "dependencies": {
+    "discord.js": "^12.5.1"
+  }
+}
