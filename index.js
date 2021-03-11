@@ -1,5 +1,7 @@
 const Discord = require('discord.js');
 const config = require('./hiddenConfig.json')
+const wyr = require('./wyr/wyr.js')
+const nhie = require('./nhie/nhie.js')
 const bot = new Discord.Client();
 
 TOKEN = config.token;
@@ -23,7 +25,15 @@ bot.on('message', (msg) => {
     // Handle arguments given
     switch (args[0].toLowerCase()) {
         case 'test':
-            msg.channel.send("Bot is working");
+            msg.channel.send("Yup!");
+            break;
+
+        case 'wyr':
+            wyr.play(msg)
+            break;
+
+        case 'nhie':
+            nhie.play(msg)
             break;
 
         default:
