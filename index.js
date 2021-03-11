@@ -6,6 +6,7 @@ const bot = new Discord.Client();
 
 TOKEN = config.token;
 PREFIX = config.prefix;
+CHANNEL_ID = config.channelID
 
 bot.on('ready', () => {
     console.log("Bot is online!");
@@ -21,6 +22,7 @@ bot.on('message', (msg) => {
     if (msg.author.bot) return; // stops bot from replying to itself
     if (!msg.guild) return; // bot will only reply if message is sent in the guild (server)
     if (!msg.content.startsWith(PREFIX)) return; // bot will only reply if the message starts with the specified prefix
+    if (msg.channel.id != CHANNEL_ID) return; // bot will only reply in the specified channel
 
     // Handle arguments given
     switch (args[0].toLowerCase()) {
@@ -35,6 +37,10 @@ bot.on('message', (msg) => {
         case 'nhie':
             nhie.play(msg)
             break;
+
+        case 'vote':
+            wyr.getVotes(msg)
+            break
 
         default:
             msg.channel.send(args[0] + " is not a valid command.");
