@@ -33,7 +33,7 @@ function play(msg) {
 
     gameActive = true;
 
-    //Reset available WYR-questions if the array is empty
+    //Reset available questions if the array is empty
     if (questions.length == 0) {
         questions = getQuestions();
     }
@@ -69,7 +69,6 @@ function play(msg) {
 
             // remove votes from arrays
             collector.on('remove', (r, user) => {
-                console.log(user.username + " removed")
                 if (r.emoji.name == '🇦') {
                     for (let i=0; i<a_votes.length; i++) {
                         if (a_votes[i].userId == user.id) {
@@ -108,6 +107,7 @@ function play(msg) {
                     }
                 }
                 
+                // update embed with vote results
                 const embed = new Discord.MessageEmbed()
                     .setColor(0x001EFF)
                     .setTitle('Results')
@@ -116,8 +116,6 @@ function play(msg) {
 
                 msg.edit(embed)
 
-                console.log(a_votes.length + " people voted for a")
-                console.log(b_votes.length + " people voted for b")
                 gameActive = false;
             });
         })))
