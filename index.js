@@ -26,10 +26,7 @@ bot.on('message', (msg) => {
 
     // Handle arguments given
     switch (args[0].toLowerCase()) {
-        case 'test':
-            msg.channel.send("Yup!");
-            break;
-
+    
         case 'wyr':
             wyr.play(msg)
             break;
@@ -37,10 +34,6 @@ bot.on('message', (msg) => {
         case 'nhie':
             nhie.play(msg)
             break;
-
-        case 'vote':
-            wyr.getVotes(msg)
-            break
 
         default:
             msg.channel.send(args[0] + " is not a valid command.");
