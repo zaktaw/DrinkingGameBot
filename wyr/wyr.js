@@ -22,7 +22,7 @@ function getQuestions() {
 
 let questions = getQuestions();
 
-function play(msg) {
+function play(msg, userQuestion) {
 
     //Makes sure that only one game can be run at the same time
     if (gameActive) {
@@ -33,21 +33,36 @@ function play(msg) {
 
     gameActive = true;
 
-    //Reset available questions if the array is empty
-    if (questions.length == 0) {
-        questions = getQuestions();
+    let question = userQuestion;
+    let alternative_a;
+    let alternative_b;
+
+    if (userQuestion) {
+        alternative_a = question.split("or")[0]
+        alternative_b = question.split("or")[1]
+        if (alternative_b.substring(alternative_b.length-1) == "?") alternative_b = alternative_b.substring(0,alternative_b.length-1) // remove question mark if user added it
     }
 
-    let randNum = utility.genRandNum(0, questions.length-1);
-    let question = questions[randNum];
-    questions.splice(randNum, 1); //Remove the chosen question from the array
+    else {
+        //Reset available questions if the array is empty
+        if (questions.length == 0) {
+            questions = getQuestions();
+        }
+
+        let randNum = utility.genRandNum(0, questions.length-1);
+        question = questions[randNum];
+        questions.splice(randNum, 1); //Remove the chosen question from the array
+
+        alternative_a = question.alternative_a
+        alternative_b = question.alternative_b
+    }
 
     const embed = new Discord.MessageEmbed()
             .setColor(0x001EFF)
             .setFooter(`You have ${SECONDS} seconds to vote`)
             .setTitle('Would you rather')
-            .addField('A', question.alternative_a)
-            .addField('B', question.alternative_b)
+            .addField('A', alternative_a)
+            .addField('B', alternative_b)
 
     let a_votes = []
     let b_votes = []

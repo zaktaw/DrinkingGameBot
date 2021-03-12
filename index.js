@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const config = require('./config.json')
+const config = require('./hiddenConfig.json')
 const wyr = require('./wyr/wyr.js')
 const nhie = require('./nhie/nhie.js')
 const bot = new Discord.Client();
@@ -27,12 +27,28 @@ bot.on('message', (msg) => {
     // Handle arguments given
     switch (args[0].toLowerCase()) {
     
+        // use question from user
         case 'wyr':
-            wyr.play(msg)
+            if (args[1]) {
+                if (!msg.content.includes("or")) return msg.channel.send("Error: The following format must be used: !wyr alternative1 or alternative2").then(message => message.delete({ timeout: 6000 }))
+                let userQuestion = msg.content.substring(PREFIX.length + args[0].length) // extract the question from the command 
+                wyr.play(msg, userQuestion)
+            }
+
+            // use random question
+            else wyr.play(msg, null)
             break;
 
         case 'nhie':
-            nhie.play(msg)
+
+            // use question from user
+            if (args[1]) {
+                let userQuestion = msg.content.substring(PREFIX.length + args[0].length) // extract the question from the command 
+                nhie.play(msg, userQuestion)
+            }
+
+            // use random question
+            else nhie.play(msg, null)
             break;
 
         default:

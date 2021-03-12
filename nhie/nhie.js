@@ -20,7 +20,7 @@ function getQuestions() {
 
 let questions = getQuestions();
 
-function play(msg) {
+function play(msg, userQuestion) {
 
     //Makes sure that only one game can be run at the same time
     if (gameActive) {
@@ -30,14 +30,18 @@ function play(msg) {
     }    
     gameActive = true;
 
-    //Reset available questions if the array is empty
-    if (questions.length == 0) {
-        questions = getQuestions();
-    }
+    let question = "Never have I ever " + userQuestion
 
-    let randNum = utility.genRandNum(0, questions.length-1);
-    let question = questions[randNum];
-    questions.splice(randNum, 1); //Remove the chosen question from the array
+    if (!userQuestion) {
+            //Reset available questions if the array is empty
+        if (questions.length == 0) {
+            questions = getQuestions();
+        }
+
+        let randNum = utility.genRandNum(0, questions.length-1);
+        question = questions[randNum];
+        questions.splice(randNum, 1); //Remove the chosen question from the array
+    }
 
     const embed = new Discord.MessageEmbed()
             .setColor(0x0f5a96)
