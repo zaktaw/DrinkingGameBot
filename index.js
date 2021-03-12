@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const config = require('./hiddenConfig.json')
+const config = require('./config.json')
 const wyr = require('./wyr/wyr.js')
 const nhie = require('./nhie/nhie.js')
 const bot = new Discord.Client();
