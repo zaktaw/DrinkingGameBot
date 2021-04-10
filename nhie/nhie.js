@@ -44,7 +44,7 @@ function play(msg, userQuestion) {
     }
 
     const embed = new Discord.MessageEmbed()
-            .setColor(0x0f5a96)
+            .setColor(0xfcf003)
             .setFooter(`You have ${SECONDS} seconds to vote`)
             .setTitle(question)
 
@@ -108,7 +108,7 @@ function play(msg, userQuestion) {
                         
                         // update embed with vote results
                         const embed = new Discord.MessageEmbed()
-                            .setColor(0x001EFF)
+                            .setColor(0xfcf003)
                             .setTitle('Results')
                             .addField(`People who have done it (${yesVotes.length})`, displayYesVotes)
                             .addField(`People who have never done it (${noVotes.length})`, displayNoVotes)

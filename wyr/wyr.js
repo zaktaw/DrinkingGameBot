@@ -58,7 +58,7 @@ function play(msg, userQuestion) {
     }
 
     const embed = new Discord.MessageEmbed()
-            .setColor(0x001EFF)
+            .setColor(0xfc0303)
             .setFooter(`You have ${SECONDS} seconds to vote`)
             .setTitle('Would you rather')
             .addField('A', alternative_a)
@@ -124,10 +124,10 @@ function play(msg, userQuestion) {
                 
                 // update embed with vote results
                 const embed = new Discord.MessageEmbed()
-                    .setColor(0x001EFF)
+                    .setColor(0xfc0303)
                     .setTitle('Results')
-                    .addField(`A (${a_votes.length})`, displayAVotes)
-                    .addField(`B (${b_votes.length})`, displayBVotes)
+                    .addField(`A: ${alternative_a} (${a_votes.length})`, displayAVotes)
+                    .addField(`B: ${alternative_b} (${b_votes.length})`, displayBVotes)
 
                 msg.edit(embed)
 

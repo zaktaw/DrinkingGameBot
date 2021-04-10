@@ -25,7 +25,7 @@ bot.on('message', (msg) => {
         // use question from user
         case 'wyr':
             if (args[1]) {
-                if (!msg.content.includes("or")) return msg.channel.send("Error: The following format must be used: !wyr alternative1 or alternative2").then(message => message.delete({ timeout: 6000 }))
+                if (!msg.content.includes("or")) return msg.channel.send("Error: The following format must be used: wyr alternative1 or alternative2").then(message => message.delete({ timeout: 6000 }))
                 let userQuestion = msg.content.substring(args[0].length) // extract the question from the command 
                 wyr.play(msg, userQuestion)
             }
@@ -47,6 +47,6 @@ bot.on('message', (msg) => {
             break;
 
         default:
-            msg.channel.send(args[0] + " is not a valid command.");
+            msg.channel.send(args[0] + " is not a valid command. Try commands wyr or nhie");
     }
 });
